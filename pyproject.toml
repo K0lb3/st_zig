@@ -1,0 +1,19 @@
+[project]
+name = "st_zig"
+authors = [{ name = "Rudolf Kolbe", email = "rkolbe96@gmail.com" }]
+description = "A setuptools extension for compiling native extensions with Zig."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.7"
+dynamic = ["version"]
+dependencies = ["setuptools", "ziglang"]
+
+[project.urls]
+"Homepage" = "https://github.com/K0lb3/st_zig"
+"Bug Tracker" = "https://github.com/K0lb3/st_zig/issues"
+
+[tool.setuptools.dynamic]
+version = { attr = "st_zig.__version__" }
+
+[tool.pyright]
+pythonVersion = "3.7"
