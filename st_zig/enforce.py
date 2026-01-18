@@ -3,13 +3,11 @@ from .ZigCompiler import ZigCompiler
 
 if TYPE_CHECKING:
     from setuptools._distutils.command import build_ext
-    from setuptools._distutils.compilers.C.unix import Compiler
 else:
     from distutils.command import build_ext
-    from distutils.compilers.C.unix import Compiler
 
 
-def enforce_via_build_ext(compiler: Type[Compiler] = ZigCompiler):
+def enforce_via_build_ext(compiler: Type[ZigCompiler] = ZigCompiler):
     """Forces setuptools to use Zig as the compiler."""
 
     def new_compiler(
@@ -18,7 +16,7 @@ def enforce_via_build_ext(compiler: Type[Compiler] = ZigCompiler):
         verbose: bool = False,
         dry_run: bool = False,
         force: bool = False,
-    ) -> Compiler:
+    ) -> ZigCompiler:
         return ZigCompiler(verbose, dry_run, force)
 
     build_ext.new_compiler = new_compiler  # type: ignore

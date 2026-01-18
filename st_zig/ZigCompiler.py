@@ -1,22 +1,22 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from setuptools._distutils.compilers.C.unix import Compiler
+    from setuptools._distutils.unixccompiler import UnixCCompiler
 
-    assert Compiler.src_extensions is not None, (
+    assert UnixCCompiler.src_extensions is not None, (
         "Compiler.src_extensions should not be None"
     )
 else:
-    from distutils.compilers.C.unix import Compiler
+    from distutils.unixccompiler import UnixCCompiler
 
 
-class ZigCompiler(Compiler):
+class ZigCompiler(UnixCCompiler):
     src_extensions = [
-        *Compiler.src_extensions,
+        *UnixCCompiler.src_extensions,
         ".zig",
     ]
     language_map = {
-        **Compiler.language_map,
+        **UnixCCompiler.language_map,
         ".zig": "c",
     }
     zig_cmd = ["python", "-m", "ziglang"]

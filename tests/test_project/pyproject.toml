@@ -1,0 +1,7 @@
+[build-system]
+requires = ["st_zig"]
+build-backend = "st_zig.build_meta"
+
+[project]
+name = "test"
+dynamic = ["version"]
